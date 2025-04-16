@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **Ad_Fatigue_Detector** is a Python-based tool designed to analyze and detect ad fatigue in digital advertising campaigns. By evaluating ad performance metrics, the tool helps marketers identify when ads are losing their effectiveness, enabling timely adjustments to improve campaign outcomes.
+The **Ad_Fatigue_Detector** is a Python-based tool designed to analyze and detect ad fatigue in digital advertising campaigns. By evaluating ad performance metrics, the tool helps marketers identify when ads are losing their effectiveness, enabling timely adjustments to improve campaign outcomes.
 
 ## Features
 
