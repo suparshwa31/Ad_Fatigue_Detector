@@ -25,13 +25,11 @@ The **Ad_Fatigue_Detector** is a Python-based tool designed to analyze and detec
    ```bash
    git clone https://github.com/suparshwa31/Ad_Fatigue_Detector.git
    ```
-
 2. Navigate into the project directory:
 
    ```bash
    cd Ad_Fatigue_Detector
    ```
-
 3. Install the required dependencies:
 
    ```bash
