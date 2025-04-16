@@ -1,25 +1,47 @@
 import os
 import pandas as pd
 from datetime import datetime
+from Data.Raw_Data import process_raw_data
+from src.Processed_Data.Clean_Data import clean_campaign_data
+from src.Models.Trainer import train_model
+from src.Models.Predict import predict_fatigue
 from src.Fatigue.Detector import detect_ad_fatigue
 from Analytics.Export_Data import prepare_tableau_data
 
 def run_fatigue_analysis():
-    try:
 
-        print("\n1. Running Fatigue Detection...")
+    try:
+        print("\nStarting Ad Fatigue Analysis Workflow")
+        print("====================================")
+        
+        # Process Raw Data
+        print("\n1. Processing Raw Data...")
+        process_raw_data()
+        
+        # Clean Campaign Data
+        print("\n2. Cleaning Campaign Data...")
+        clean_campaign_data()
+        
+        # Train Model
+        print("\n3. Training Fatigue Detection Model...")
+        train_model()
+        
+        # Generate Predictions
+        print("\n4. Generating Fatigue Predictions...")
+        predict_fatigue()
+        
+        # Run Fatigue Detection
+        print("\n5. Running Fatigue Detection...")
         detect_ad_fatigue()
         
-        print("\n2. Preparing Data for Tableau...")
+        # Prepare Data for Tableau
+        print("\n6. Preparing Data for Tableau...")
         prepare_tableau_data()
         
-        print("\n3. Generating Summary Report...")
+        # Generate Summary Report
+        print("\n7. Generating Summary Report...")
         generate_summary_report()
         
-        print("\nAnalysis Complete! Check the following files:")
-        print("- Fatigue Analysis: Ad_Fatigue_detector/src/Fatigue/fatigue_analysis.csv")
-        print("- Tableau Data: Ad_Fatigue_detector/Analytics/Data/tableau_fatigue_data_*.csv")
-        print("- Summary Report: Ad_Fatigue_detector/Analytics/Reports/fatigue_summary_*.txt")
         
     except Exception as e:
         print(f"\nError in workflow: {e}")
@@ -28,7 +50,7 @@ def generate_summary_report():
 
     try:
         # Load fatigue analysis data
-        fatigue_data = pd.read_csv('Ad_Fatigue_detector/src/Fatigue/fatigue_analysis.csv')
+        fatigue_data = pd.read_csv('Ad_Fatigue_detector/Fatigue/fatigue_analysis.csv')
         
         # Create reports directory if it doesn't exist
         reports_dir = 'Ad_Fatigue_detector/Analytics/Reports'
@@ -64,6 +86,9 @@ def generate_summary_report():
                 f.write(f"Campaign: {row['campaign_name']}\n")
                 f.write(f"Fatigue Score: {row['predicted_fatigue_score']:.2f}\n")
                 f.write(f"Status: {row['fatigue_status']}\n\n")
+            
+            
+        print(f"Summary report generated: fatigue_summary_{timestamp}.txt")
         
     except Exception as e:
         print(f"Error generating summary report: {e}")
