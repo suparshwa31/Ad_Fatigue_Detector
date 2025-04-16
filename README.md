@@ -44,6 +44,7 @@ Run the main script to analyze ad performance data:
 ```bash
 python main.py
 ```
+<img width="1001" alt="Screenshot 2025-04-16 at 18 53 15" src="https://github.com/user-attachments/assets/3b498a9e-ece9-4fc1-8136-3b685da0daa0" />
 
 Ensure that your ad performance data is formatted correctly and accessible to the script. Refer to the documentation within the script for detailed instructions on data input and configuration.
 
